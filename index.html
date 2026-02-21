@@ -12,12 +12,12 @@
 
     <style>
         :root {
-            --bg-color: #050505;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --accent-1: #ff003c; /* قرمز روشن و زنده */
-            --accent-2: #8b0000; /* قرمز تیره / زرشکی */
-            --glass-bg: rgba(255, 255, 255, 0.03);
+            --bg-color: #07090f; /* سرمه‌ای بسیار تیره / مشکی */
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-1: #2dd4bf; /* فیروزه‌ای مدرن (Teal) */
+            --accent-2: #6366f1; /* نیلی / بنفش ملایم (Indigo) */
+            --glass-bg: rgba(15, 23, 42, 0.4);
             --glass-border: rgba(255, 255, 255, 0.05);
         }
 
@@ -38,6 +38,11 @@
             color: var(--text-primary);
             overflow-x: hidden;
             line-height: 1.6;
+            /* پترن گرید محو برای حس برنامه‌نویسی/مدرن */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
 
         /* پس‌زمینه متحرک */
@@ -49,28 +54,27 @@
             height: 100vh;
             z-index: -1;
             overflow: hidden;
-            background: #000;
         }
 
         .blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
+            filter: blur(120px);
+            opacity: 0.15; /* کاهش شدت رنگ‌ها برای مدرن‌تر شدن */
             animation: float 20s infinite alternate ease-in-out;
         }
 
         .blob-1 {
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             background: var(--accent-1);
             top: -100px;
             right: -100px;
         }
 
         .blob-2 {
-            width: 500px;
-            height: 500px;
+            width: 600px;
+            height: 600px;
             background: var(--accent-2);
             bottom: -200px;
             left: -100px;
@@ -79,7 +83,7 @@
 
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, 50px) scale(1.2); }
+            100% { transform: translate(80px, 40px) scale(1.1); }
         }
 
         /* نشانگر موس سفارشی */
@@ -97,12 +101,13 @@
             width: 8px;
             height: 8px;
             background-color: var(--accent-1);
+            box-shadow: 0 0 10px var(--accent-1);
         }
 
         .cursor-outline {
             width: 40px;
             height: 40px;
-            border: 2px solid var(--accent-2);
+            border: 1.5px solid var(--accent-2);
             transition: width 0.2s, height 0.2s, background-color 0.2s;
         }
 
@@ -116,8 +121,8 @@
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: rgba(5, 5, 5, 0.5);
-            backdrop-filter: blur(10px);
+            background: rgba(7, 9, 15, 0.6);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--glass-border);
         }
 
@@ -189,32 +194,35 @@
             font-size: 1.2rem;
             color: var(--accent-1);
             letter-spacing: 2px;
+            font-weight: 500;
         }
 
         .hero-title {
-            font-size: 5rem;
+            font-size: 5.5rem;
             font-weight: 900;
             line-height: 1.1;
+            letter-spacing: -1px;
         }
 
         .hero-subtitle {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--text-secondary);
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .gradient-text {
             background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .hero-desc {
             max-width: 600px;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-secondary);
             margin-top: 20px;
+            line-height: 1.8;
         }
 
         .btn-group {
@@ -224,12 +232,12 @@
         }
 
         .btn {
-            padding: 15px 40px;
-            border-radius: 30px;
-            font-size: 1.1rem;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-size: 1.05rem;
             font-weight: 600;
             text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -237,23 +245,26 @@
 
         .btn-primary {
             background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
-            color: #000;
+            color: #ffffff;
             border: none;
+            box-shadow: 0 4px 15px rgba(45, 212, 191, 0.2);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.3);
+            box-shadow: 0 10px 25px rgba(45, 212, 191, 0.4);
         }
 
         .btn-outline {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.02);
             color: var(--text-primary);
-            border: 1px solid var(--accent-1);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(5px);
         }
 
         .btn-outline:hover {
-            background: rgba(255, 0, 60, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-1);
             transform: translateY(-3px);
         }
 
@@ -266,23 +277,28 @@
         }
 
         .ai-point {
-            background: rgba(255, 0, 60, 0.1);
-            border: 1px solid rgba(255, 0, 60, 0.3);
-            padding: 10px 20px;
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 10px 22px;
             border-radius: 30px;
             font-size: 0.95rem;
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--text-primary);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .ai-point i {
             color: var(--accent-1);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, border-color 0.3s;
+            font-size: 1.1rem;
         }
 
         .ai-point:hover {
             transform: translateY(-5px);
             border-color: var(--accent-1);
+            background: rgba(45, 212, 191, 0.1);
         }
 
         /* ویجت چت هوش مصنوعی */
@@ -297,7 +313,7 @@
             width: 65px;
             height: 65px;
             border-radius: 50%;
-            background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
             border: none;
             color: #ffffff;
             font-size: 2rem;
@@ -305,12 +321,12 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 4px 25px rgba(255, 0, 60, 0.4);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         .ai-chat-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .ai-chat-window {
@@ -318,15 +334,15 @@
             bottom: 85px;
             right: 0;
             width: 360px;
-            height: 480px;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(15px);
+            height: 500px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            border-radius: 24px;
             display: none;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
             transform-origin: bottom right;
         }
 
@@ -341,13 +357,13 @@
         }
 
         .chat-header {
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.03);
             border-bottom: 1px solid var(--glass-border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .chat-header span {
@@ -367,7 +383,7 @@
         }
 
         .close-chat:hover {
-            color: var(--accent-2);
+            color: var(--accent-1);
         }
 
         .chat-messages {
@@ -380,7 +396,7 @@
         }
 
         .chat-messages::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
         }
         .chat-messages::-webkit-scrollbar-thumb {
             background: var(--glass-border);
@@ -390,23 +406,24 @@
         .message {
             max-width: 85%;
             padding: 12px 16px;
-            border-radius: 15px;
+            border-radius: 16px;
             font-size: 0.95rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .msg-bot {
-            background: rgba(139, 0, 0, 0.15);
+            background: rgba(99, 102, 241, 0.15);
             align-self: flex-start;
-            border-bottom-right-radius: 2px;
-            border: 1px solid rgba(139, 0, 0, 0.2);
+            border-bottom-right-radius: 4px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            color: var(--text-primary);
         }
 
         .msg-user {
-            background: rgba(255, 0, 60, 0.15);
+            background: rgba(45, 212, 191, 0.15);
             align-self: flex-end;
-            border-bottom-left-radius: 2px;
-            border: 1px solid rgba(255, 0, 60, 0.2);
+            border-bottom-left-radius: 4px;
+            border: 1px solid rgba(45, 212, 191, 0.2);
             color: #fff;
         }
 
@@ -415,23 +432,24 @@
             border-top: 1px solid var(--glass-border);
             display: flex;
             gap: 10px;
-            background: rgba(5, 5, 5, 0.5);
+            background: rgba(0, 0, 0, 0.2);
         }
 
         .chat-input-area input {
             flex: 1;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--glass-border);
-            padding: 12px 15px;
-            border-radius: 20px;
+            padding: 12px 18px;
+            border-radius: 30px;
             color: var(--text-primary);
             font-family: 'Vazirmatn', sans-serif;
             outline: none;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         .chat-input-area input:focus {
             border-color: var(--accent-1);
+            background: rgba(255, 255, 255, 0.06);
         }
 
         .chat-input-area button {
@@ -446,11 +464,12 @@
             align-items: center;
             cursor: pointer;
             font-size: 1.3rem;
-            transition: transform 0.2s;
+            transition: all 0.2s;
         }
 
         .chat-input-area button:hover {
             transform: scale(1.05);
+            background: #fff;
         }
 
         .typing-indicator {
@@ -463,11 +482,12 @@
 
         /* عناوین سکشن‌ها */
         .section-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 50px;
             display: flex;
             align-items: center;
             gap: 20px;
+            font-weight: 800;
         }
 
         .section-title::after {
@@ -481,23 +501,24 @@
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 40px;
             align-items: center;
         }
 
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 40px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, border-color 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.1);
             transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
         .info-list {
@@ -506,57 +527,63 @@
         }
 
         .info-list li {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
+            gap: 12px;
+            font-size: 1.05rem;
+            color: var(--text-primary);
         }
 
         .info-list i {
-            color: var(--accent-2);
+            color: var(--accent-1);
             font-size: 1.5rem;
+            background: rgba(45, 212, 191, 0.1);
+            padding: 8px;
+            border-radius: 12px;
         }
 
         /* مهارت‌ها */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
         }
 
         .skill-card {
-            text-align: center;
+            text-align: right;
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 15px;
+            padding: 35px;
         }
 
         .skill-icon {
-            font-size: 4rem;
+            font-size: 3.5rem;
             background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
 
         .skill-name {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.4rem;
+            font-weight: 700;
         }
 
         .skill-desc {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
         /* ریسپانسیو */
         @media (max-width: 768px) {
-            .hero-title { font-size: 3rem; }
+            .hero-title { font-size: 3.5rem; }
             .hero-subtitle { font-size: 1.8rem; }
             .about-grid { grid-template-columns: 1fr; }
             nav { padding: 15px 20px; }
-            .nav-links { display: none; } /* برای موبایل در نسخه واقعی منوی همبرگری نیاز است */
+            .nav-links { display: none; }
             .cursor-dot, .cursor-outline { display: none; }
             * { cursor: auto; }
         }
@@ -608,7 +635,7 @@
                     </a>
                 </div>
 
-                <!-- نکات هوش مصنوعی (پر کردن فضای خالی) -->
+                <!-- نکات هوش مصنوعی -->
                 <div class="hero-ai-points gs-reveal">
                     <div class="ai-point"><i class="ph ph-brain"></i> توسعه مدل‌های یادگیری ماشین (ML)</div>
                     <div class="ai-point"><i class="ph ph-network"></i> پردازش زبان طبیعی (NLP)</div>
@@ -636,27 +663,27 @@
                     <ul class="info-list">
                         <li>
                             <i class="ph ph-user"></i>
-                            <strong>نام:</strong> کامیار اورعی
+                            <div><strong>نام:</strong> کامیار اورعی</div>
                         </li>
                         <li>
                             <i class="ph ph-student"></i>
-                            <strong>تحصیلات:</strong> دانشجو مهندسی کامپیوتر
+                            <div><strong>تحصیلات:</strong> دانشجو مهندسی کامپیوتر</div>
                         </li>
                         <li>
                             <i class="ph ph-buildings"></i>
-                            <strong>دانشگاه:</strong> آزاد واحد شهرقدس
+                            <div><strong>دانشگاه:</strong> آزاد واحد شهرقدس</div>
                         </li>
                         <li>
                             <i class="ph ph-code"></i>
-                            <strong>حوزه فعالیت:</strong> نرم‌افزار / هوش مصنوعی / FiveM
+                            <div><strong>حوزه فعالیت:</strong> نرم‌افزار / هوش مصنوعی / FiveM</div>
                         </li>
                         <li>
                             <i class="ph ph-github-logo"></i>
-                            <strong>گیت‌هاب:</strong> <a href="https://github.com/KamyarDeCode" target="_blank" style="color: var(--accent-1); text-decoration: none; transition: color 0.3s;">KamyarDeCode</a>
+                            <div><strong>گیت‌هاب:</strong> <a href="https://github.com/KamyarDeCode" target="_blank" style="color: var(--accent-1); text-decoration: none; transition: color 0.3s;">KamyarDeCode</a></div>
                         </li>
                         <li>
                             <i class="ph ph-telegram-logo"></i>
-                            <strong>تلگرام:</strong> <a href="https://t.me/kamyasli" target="_blank" style="color: var(--accent-1); text-decoration: none; transition: color 0.3s;">@kamyasli</a>
+                            <div><strong>تلگرام:</strong> <a href="https://t.me/kamyasli" target="_blank" style="color: var(--accent-1); text-decoration: none; transition: color 0.3s;">@kamyasli</a></div>
                         </li>
                     </ul>
                 </div>
@@ -671,25 +698,25 @@
                 <div class="skill-card glass-card gs-skill">
                     <div class="skill-icon"><i class="ph ph-file-cpp"></i></div>
                     <div class="skill-name">C++</div>
-                    <div class="skill-desc">توسعه نرم‌افزارهای با کارایی بالا، مدیریت حافظه، و برنامه‌نویسی شی‌گرا.</div>
+                    <div class="skill-desc">توسعه نرم‌افزارهای با کارایی بالا، مدیریت حافظه، و برنامه‌نویسی شی‌گرا با دقت بالا در عملکرد سیستم.</div>
                 </div>
 
                 <div class="skill-card glass-card gs-skill">
                     <div class="skill-icon"><i class="ph ph-moon-stars"></i></div>
                     <div class="skill-name">Lua</div>
-                    <div class="skill-desc">توسعه ماژول‌ها، بازی‌سازی و اسکریپت‌نویسی منعطف برای سیستم‌های تعبیه‌شده.</div>
+                    <div class="skill-desc">توسعه ماژول‌ها، بازی‌سازی و اسکریپت‌نویسی منعطف برای سیستم‌های تعبیه‌شده و سرورهای فایوام.</div>
                 </div>
 
                 <div class="skill-card glass-card gs-skill">
                     <div class="skill-icon"><i class="ph ph-brain"></i></div>
                     <div class="skill-name">هوش مصنوعی (AI)</div>
-                    <div class="skill-desc">آشنایی با الگوریتم‌های یادگیری ماشین، شبکه‌های عصبی و پردازش داده‌ها.</div>
+                    <div class="skill-desc">آشنایی عمیق با الگوریتم‌های یادگیری ماشین، شبکه‌های عصبی عمیق و پردازش و تحلیل داده‌ها.</div>
                 </div>
 
                 <div class="skill-card glass-card gs-skill">
                     <div class="skill-icon"><i class="ph ph-tree-structure"></i></div>
                     <div class="skill-name">الگوریتم و معماری</div>
-                    <div class="skill-desc">طراحی ساختمان داده‌های پیچیده و حل مسائل الگوریتمیک در مهندسی کامپیوتر.</div>
+                    <div class="skill-desc">طراحی ساختمان داده‌های پیچیده و حل مسائل پیشرفته الگوریتمیک در حوزه مهندسی نرم‌افزار.</div>
                 </div>
 
             </div>
@@ -699,21 +726,21 @@
         <section id="ai-future">
             <h2 class="section-title gs-reveal">مزایا و آینده هوش مصنوعی</h2>
             <div class="skills-grid">
-                <div class="glass-card gs-reveal" style="text-align: right; padding: 35px;">
-                    <i class="ph ph-rocket-launch" style="font-size: 3.5rem; color: var(--accent-1); margin-bottom: 20px; display: block;"></i>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 15px;">اتوماسیون و بهره‌وری</h3>
+                <div class="glass-card gs-reveal" style="text-align: right;">
+                    <i class="ph ph-rocket-launch" style="font-size: 3rem; color: var(--accent-1); margin-bottom: 20px; display: block;"></i>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 15px;">اتوماسیون و بهره‌وری</h3>
                     <p style="color: var(--text-secondary); line-height: 1.8;">هوش مصنوعی با خودکارسازی کارهای تکراری، زمان ما توسعه‌دهندگان را آزاد می‌کند تا روی حل مسائل پیچیده‌تر، بهینه‌سازی کدهای C++ و کارهای خلاقانه‌تر تمرکز کنیم.</p>
                 </div>
                 
-                <div class="glass-card gs-reveal" style="text-align: right; padding: 35px;">
-                    <i class="ph ph-lightbulb" style="font-size: 3.5rem; color: var(--accent-2); margin-bottom: 20px; display: block;"></i>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 15px;">خلق نوآوری‌های بی‌سابقه</h3>
+                <div class="glass-card gs-reveal" style="text-align: right;">
+                    <i class="ph ph-lightbulb" style="font-size: 3rem; color: var(--accent-2); margin-bottom: 20px; display: block;"></i>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 15px;">خلق نوآوری‌های بی‌سابقه</h3>
                     <p style="color: var(--text-secondary); line-height: 1.8;">آینده متعلق به ترکیب هوش مصنوعی با نرم‌افزارهای سطح پایین و سخت‌افزار است. الگوریتم‌های هوشمند در سیستم‌های تعبیه‌شده مرزهای تکنولوژی را جابه‌جا خواهند کرد.</p>
                 </div>
                 
-                <div class="glass-card gs-reveal" style="text-align: right; padding: 35px;">
-                    <i class="ph ph-chart-line-up" style="font-size: 3.5rem; color: var(--accent-1); margin-bottom: 20px; display: block;"></i>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 15px;">شخصی‌سازی و تصمیم‌گیری</h3>
+                <div class="glass-card gs-reveal" style="text-align: right;">
+                    <i class="ph ph-chart-line-up" style="font-size: 3rem; color: var(--accent-1); margin-bottom: 20px; display: block;"></i>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 15px;">شخصی‌سازی و تصمیم‌گیری</h3>
                     <p style="color: var(--text-secondary); line-height: 1.8;">مدل‌های ماشین‌لرنینگ به سیستم‌ها قدرت می‌دهند تا با تحلیل داده‌های عظیم در کسری از ثانیه، الگوها را تشخیص داده و هوشمندانه‌تر از همیشه تصمیم‌گیری کنند.</p>
                 </div>
             </div>
@@ -724,7 +751,7 @@
             <h2 class="section-title gs-reveal">پروژه‌های گیت‌هاب و سوابق</h2>
             <div class="skills-grid">
                 
-                <div class="glass-card gs-reveal" style="text-align: right; padding: 35px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="glass-card gs-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <i class="ph ph-game-controller" style="font-size: 3rem; color: var(--accent-1); margin-bottom: 20px; display: block;"></i>
                         <h3 style="font-size: 1.3rem; margin-bottom: 15px;">سیستم Queue در FiveM</h3>
@@ -733,7 +760,7 @@
                     <a href="https://github.com/KamyarDeCode/How-To-Add-Queue-In-Fivem-Checking-Infomation" target="_blank" class="btn btn-outline" style="padding: 10px 20px; font-size: 1rem; align-self: flex-start;">مشاهده مخزن <i class="ph ph-arrow-up-left"></i></a>
                 </div>
 
-                <div class="glass-card gs-reveal" style="text-align: right; padding: 35px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="glass-card gs-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <i class="ph ph-network" style="font-size: 3rem; color: var(--accent-2); margin-bottom: 20px; display: block;"></i>
                         <h3 style="font-size: 1.3rem; margin-bottom: 15px;">FRP Reverse Loadbalance</h3>
@@ -742,7 +769,7 @@
                     <a href="https://github.com/KamyarDeCode/FRP_Reverse_Loadbalance" target="_blank" class="btn btn-outline" style="padding: 10px 20px; font-size: 1rem; align-self: flex-start;">مشاهده مخزن <i class="ph ph-arrow-up-left"></i></a>
                 </div>
 
-                <div class="glass-card gs-reveal" style="text-align: right; padding: 35px; background: rgba(255, 0, 60, 0.05); display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="glass-card gs-reveal" style="background: rgba(99, 102, 241, 0.05); display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(99, 102, 241, 0.2);">
                     <div>
                         <i class="ph ph-github-logo" style="font-size: 3rem; color: var(--text-primary); margin-bottom: 20px; display: block;"></i>
                         <h3 style="font-size: 1.3rem; margin-bottom: 15px;">@KamyarDeCode</h3>
@@ -757,18 +784,18 @@
         <!-- ارتباط با من -->
         <section id="contact" style="min-height: 60vh;">
             <div class="glass-card" style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">آماده همکاری در پروژه‌های شما</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 40px; font-size: 1.1rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 800;">آماده همکاری در پروژه‌های شما</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.8;">
                     اگر ایده‌ای دارید یا به دنبال یک برنامه‌نویس C++/Lua و یا متخصص هوش مصنوعی برای تیم خود هستید، خوشحال می‌شوم با هم گفتگو کنیم.
                 </p>
                 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="mailto:contact@kamyar.com" class="btn btn-primary" style="font-size: 1.2rem; padding: 15px 40px;">
+                    <a href="mailto:contact@kamyar.com" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 35px;">
                         ارسال ایمیل <i class="ph ph-envelope-simple"></i>
                     </a>
-                    <a href="https://t.me/kamyasli" target="_blank" class="btn btn-outline" style="font-size: 1.2rem; padding: 15px 40px;">
+                    <a href="https://t.me/kamyasli" target="_blank" class="btn btn-outline" style="font-size: 1.1rem; padding: 15px 35px;">
                         ارتباط در تلگرام <i class="ph ph-telegram-logo"></i>
                     </a>
-                    <a href="https://github.com/KamyarDeCode" target="_blank" class="btn btn-outline" style="font-size: 1.2rem; padding: 15px 40px;">
+                    <a href="https://github.com/KamyarDeCode" target="_blank" class="btn btn-outline" style="font-size: 1.1rem; padding: 15px 35px;">
                         گیت‌هاب من <i class="ph ph-github-logo"></i>
                     </a>
                 </div>
@@ -833,7 +860,7 @@
             el.addEventListener("mouseenter", () => {
                 cursorOutline.style.width = "60px";
                 cursorOutline.style.height = "60px";
-                cursorOutline.style.backgroundColor = "rgba(255, 0, 60, 0.1)";
+                cursorOutline.style.backgroundColor = "rgba(45, 212, 191, 0.1)";
             });
             el.addEventListener("mouseleave", () => {
                 cursorOutline.style.width = "40px";
@@ -854,7 +881,6 @@
         });
 
         // نمایش پله‌ای محتوای هیرو
-        // تغییر مهم: فقط المان‌های gs-reveal داخل بخش #home را برای انیمیشن لودینگ انتخاب کردیم
         tl.from("#home .gs-reveal", {
             y: 50,
             opacity: 0,
@@ -871,7 +897,7 @@
             gsap.from(elem, {
                 scrollTrigger: {
                     trigger: elem,
-                    start: "top 80%", // وقتی بالای عنصر به 80% صفحه رسید شروع شود
+                    start: "top 80%", 
                     toggleActions: "play none none reverse"
                 },
                 y: 50,
@@ -890,7 +916,7 @@
             y: 50,
             opacity: 0,
             duration: 0.8,
-            stagger: 0.2, // فاصله زمانی بین انیمیشن هر کارت
+            stagger: 0.2, 
             ease: "back.out(1.7)"
         });
 
@@ -964,7 +990,7 @@
                         return "خطا در ارتباط با سرور هوش مصنوعی. لطفاً چند لحظه دیگر امتحان کنید.";
                     }
                     await delay(currentDelay);
-                    currentDelay *= 2; // منطق تاخیر نمایی (Exponential backoff)
+                    currentDelay *= 2; 
                 }
             }
         }
